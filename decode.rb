@@ -1,25 +1,31 @@
 MORSE = {
-    '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D', '.' => 'E',
-    '..-.' => 'F', '--.' => 'G', '....' => 'H', '..' => 'I', '.---' => 'J',
-    '-.-' => 'K', '.-..' => 'L', '--' => 'M', '-.' => 'N', '---' => 'O',
-    '.--.' => 'P', '--.-' => 'Q', '.-.' => 'R', '...' => 'S', '-' => 'T',
-    '..-' => 'U', '...-' => 'V', '.--' => 'W', '-..-' => 'X', '-.--' => 'Y',
-    '--..' => 'Z'
-}
+  '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D', '.' => 'E',
+  '..-.' => 'F', '--.' => 'G', '....' => 'H', '..' => 'I', '.---' => 'J',
+  '-.-' => 'K', '.-..' => 'L', '--' => 'M', '-.' => 'N', '---' => 'O',
+  '.--.' => 'P', '--.-' => 'Q', '.-.' => 'R', '...' => 'S', '-' => 'T',
+  '..-' => 'U', '...-' => 'V', '.--' => 'W', '-..-' => 'X', '-.--' => 'Y',
+  '--..' => 'Z'
+}.freeze
 
 def decode_char(char)
-    puts MORSE[char].to_s.downcase
+  @theLetter = MORSE[char].downcase
+  @theLetter
 end
 
 def decode_word(word)
-    word.split(' ').each do |char|
+    @letters = word.split
+    @ourLetters = ''
+  @letters.each do |char|
     decode_char(char)
-    end
+    @ourLetters += decode_char(char)
+  end
+  puts @ourLetters
 end
 
 def decode_sentence(sentence)
-    sentence.split(' ').each do |word|
+  sentence.split.each do |word|
     decode_word(word)
-    end
+  end
 end
-decode_sentence("-- -.--   -. .- -- .")
+decode_char('--..')
+decode_word('--.. ..')
