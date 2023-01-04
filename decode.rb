@@ -18,14 +18,17 @@ end
 
 def decode_word(word)
   n_word = word.split(" ")
-  n_word.map do |char| decode_char(char) end.join
+ @d_word = n_word.map do |char| decode_char(char)
+end
+  @d_word.join
 end
 
 def decode_sentence(sentence)
   @sentns = sentence.split("   ")
-  @sentns.map do |word| 
+  @message = @sentns.map do |word| 
     decode_word(word) 
-  end.join(" ")
+  end
+  @message.join(" ")
 end
 
 puts decode_char(".-")
